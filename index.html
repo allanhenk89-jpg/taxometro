@@ -10,9 +10,9 @@
 <meta name="theme-color" content="#0b0d0c">
 <title>Taxômetro</title>
 
-<!-- PWA Manifest e ícones -->
-<link rel="manifest" href="/manifest.json">
-<link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+<!-- PWA Manifest e ícones - ATUALIZADO PARA SUBPASTA /taxometro/ -->
+<link rel="manifest" href="/taxometro/manifest.json">
+<link rel="apple-touch-icon" href="/taxometro/icons/icon-192x192.png">
 
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -2404,13 +2404,44 @@ loadAllSecure().then(() => {
   renderSaved();
   initAdMob();
 });
+
+/* ════════════════════════════════════
+   INSTALL PROMPT (PWA)
+   ════════════════════════════════════ */
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  
+  // Mostrar um toast sugerindo instalação após 3 segundos
+  setTimeout(() => {
+    showToast('📱 Toque em "Instalar app" no menu para adicionar à tela inicial');
+  }, 3000);
+});
+
+// Função para instalar (pode ser chamada por um botão)
+function installApp() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('Usuário instalou o app');
+        showToast('✅ App instalado com sucesso!');
+      }
+      deferredPrompt = null;
+    });
+  } else {
+    showToast('📱 Use o menu do navegador para instalar o app');
+  }
+}
 </script>
 
-<!-- Service Worker Registration -->
+<!-- Service Worker Registration - ATUALIZADO PARA SUBPASTA -->
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
+    navigator.serviceWorker.register('/taxometro/service-worker.js')
       .then(registration => {
         console.log('SW registrado com sucesso. Escopo:', registration.scope);
       })
