@@ -1,10 +1,16 @@
 const CACHE_NAME = 'taxometro-v1.0.0';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png'
+  '/taxometro/',
+  '/taxometro/index.html',
+  '/taxometro/manifest.json',
+  '/taxometro/icons/icon-72x72.png',
+  '/taxometro/icons/icon-96x96.png',
+  '/taxometro/icons/icon-128x128.png',
+  '/taxometro/icons/icon-144x144.png',
+  '/taxometro/icons/icon-152x152.png',
+  '/taxometro/icons/icon-192x192.png',
+  '/taxometro/icons/icon-384x384.png',
+  '/taxometro/icons/icon-512x512.png'
 ];
 
 // Install
@@ -37,7 +43,9 @@ self.addEventListener('fetch', event => {
   if (event.request.url.includes('api.anthropic.com') ||
       event.request.url.includes('google-analytics.com') ||
       event.request.url.includes('googletagmanager.com') ||
-      event.request.url.includes('doubleclick.net')) {
+      event.request.url.includes('doubleclick.net') ||
+      event.request.url.includes('fonts.googleapis.com') ||
+      event.request.url.includes('fonts.gstatic.com')) {
     return;
   }
 
@@ -59,7 +67,7 @@ self.addEventListener('fetch', event => {
         }).catch(() => {
           // Fallback offline
           if (event.request.mode === 'navigate') {
-            return caches.match('/index.html');
+            return caches.match('/taxometro/index.html');
           }
         });
       })
@@ -70,8 +78,8 @@ self.addEventListener('fetch', event => {
 self.addEventListener('push', event => {
   const options = {
     body: event.data ? event.data.text() : 'Nova atualização disponível!',
-    icon: '/icons/icon-192x192.png',
-    badge: '/icons/badge-72x72.png',
+    icon: '/taxometro/icons/icon-192x192.png',
+    badge: '/taxometro/icons/icon-72x72.png',
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),
@@ -81,12 +89,12 @@ self.addEventListener('push', event => {
       {
         action: 'explore',
         title: 'Ver agora',
-        icon: '/icons/checkmark.png'
+        icon: '/taxometro/icons/icon-72x72.png'
       },
       {
         action: 'close',
         title: 'Fechar',
-        icon: '/icons/xmark.png'
+        icon: '/taxometro/icons/icon-72x72.png'
       }
     ]
   };
@@ -101,7 +109,11 @@ self.addEventListener('notificationclick', event => {
   event.notification.close();
   if (event.action === 'explore') {
     event.waitUntil(
-      clients.openWindow('/')
+      clients.openWindow('/taxometro/')
+    );
+  } else {
+    event.waitUntil(
+      clients.openWindow('/taxometro/')
     );
   }
 });
