@@ -1,57 +1,58 @@
 {
-  "name": "Taxômetro",
+  "name": "Taxômetro - Compare Maquininhas",
   "short_name": "Taxômetro",
   "description": "Compare taxas de máquinas de cartão e descubra a melhor opção para o seu negócio",
-  "start_url": "/",
-  "display": "standalone",
-  "orientation": "portrait",
   "theme_color": "#0b0d0c",
   "background_color": "#0b0d0c",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/taxometro/",
+  "start_url": "/taxometro/",
   "icons": [
     {
-      "src": "icons/icon-72x72.png",
+      "src": "/taxometro/icons/icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-96x96.png",
+      "src": "/taxometro/icons/icon-96x96.png",
       "sizes": "96x96",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-128x128.png",
+      "src": "/taxometro/icons/icon-128x128.png",
       "sizes": "128x128",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-144x144.png",
+      "src": "/taxometro/icons/icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-152x152.png",
+      "src": "/taxometro/icons/icon-152x152.png",
       "sizes": "152x152",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-192x192.png",
+      "src": "/taxometro/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-384x384.png",
+      "src": "/taxometro/icons/icon-384x384.png",
       "sizes": "384x384",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icons/icon-512x512.png",
+      "src": "/taxometro/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -59,14 +60,14 @@
   ],
   "screenshots": [
     {
-      "src": "screenshots/screenshot1.png",
+      "src": "/taxometro/screenshots/screenshot1.png",
       "sizes": "1170x2532",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Comparação de taxas"
     },
     {
-      "src": "screenshots/screenshot2.png",
+      "src": "/taxometro/screenshots/screenshot2.png",
       "sizes": "1170x2532",
       "type": "image/png",
       "form_factor": "narrow",
